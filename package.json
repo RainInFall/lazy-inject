@@ -1,0 +1,28 @@
+{
+  "name": "lazy-inject",
+  "version": "0.0.1",
+  "description": "inject when source ready",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RainInFall/lazy-inject.git"
+  },
+  "keywords": [
+    "lazy",
+    "inject"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RainInFall/lazy-inject/issues"
+  },
+  "homepage": "https://github.com/RainInFall/lazy-inject#readme",
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "lodash": "^4.17.2",
+    "mocha": "^3.2.0"
+  }
+}
