@@ -134,3 +134,31 @@ describe('Injector#waiting', function(){
     });
   });
 });
+
+describe('Injector#end', function(){
+  it('should not call when none waiting', function(){
+    var injector = Injector();
+    injector.end(function(){
+      expect(false).toBe(true);
+    })
+  });
+  it('should call when none invokers waiting after injector', function(done){
+    this.timeout(500);
+    var injector = Injector();
+    var called = false;
+    var after = false;
+    injector.invoke(['one'], function(){
+      called = true;
+    })
+    injector.end(function(){
+      expect(after).toBe(false);
+      expect(called).toBe(true);
+    })
+    injector.inject('one', 1);
+    after = true;
+    _.defer(function(){
+      expect(after).toBe(true);
+      done();
+    })
+  });
+});

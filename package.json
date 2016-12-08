@@ -1,6 +1,6 @@
 {
   "name": "lazy-inject",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "inject when source ready",
   "main": "index.js",
   "scripts": {

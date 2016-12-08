@@ -4,6 +4,7 @@ function Injector() {
   }
   this.src = {};
   this.invokers = [];
+  this.endCbs = [];
 };
 
 Injector.prototype.inject = function(name, source) {
@@ -12,6 +13,11 @@ Injector.prototype.inject = function(name, source) {
   me.invokers = me.invokers.filter(function(invoker){
     return !me.try(invoker.sources, invoker.cb);
   });
+  if (me.invokers.length === 0) {
+    me.endCbs.forEach(function(cb){
+      cb();
+    });
+  }
 };
 
 Injector.prototype.invoke = function(sources, cb) {
@@ -36,6 +42,11 @@ Injector.prototype.try = function (sources, cb) {
 
 Injector.prototype.waiting = function() {
   return this.invokers.length;
+}
+
+Injector.prototype.end = function(cb) {
+  var me = this;
+  me.endCbs.push(cb);
 }
 
 module.exports = Injector;
